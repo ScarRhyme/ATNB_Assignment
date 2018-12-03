@@ -1,0 +1,68 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ATNB_Assignment.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministratorPage.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Authors Management</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Authors Management</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Authors List</h4>
+                <div class="table-responsive m-t-40">
+                    <a class="dt-button" tabindex="0" aria-controls="example23"><span>@Html.ActionLink("Create New", "Create")</span></a>
+                    <table class="display nowrap table table-hover table-striped table-bordered dataTable">
+                        <tr>
+                            <th>
+                                Author Name
+                            </th>
+                            <th>
+                                History
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AuthorName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.History)
+                                </td>
+                                <td>
+                                    <a href="/AuthorManage/Edit/@item.AuthorId"><i class="fa fa-edit"></i></a> |
+                                    <a href="/AuthorManage/Details/@item.AuthorId"><i class="fa fa-book-open"></i></a> |
+                                    <a href="/AuthorManage/Delete/@item.AuthorId"><i class="fa fa-trash"></i></a>
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.AuthorId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.AuthorId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.AuthorId })*@
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    <div class="col-lg-12 clearfix">
+                        @Html.PagedListPager(Model, sotrang => Url.Action("Index", new { page = sotrang }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

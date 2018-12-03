@@ -1,0 +1,86 @@
+﻿@model ATNB_Assignment.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<style>
+    .login-box {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .login-register {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 100%;
+        width: 100%;
+        padding: 10% 0;
+        position: fixed;
+        background-image: url(../IMG_1352.jpg);
+        bottom: 0px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+</style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login Page</title>
+</head>
+<body>
+
+    <div class="login-register">
+        <div class="login-box card">
+            <div class="card-body">
+
+                @using (Html.BeginForm())
+                {
+                    @ViewBag.Error;
+                    @Html.AntiForgeryToken()
+                    <h3 class="m-b-20">Sign In</h3>
+                    <div class="form-group">
+                        <div class="col-xs-15">
+                            <input class="form-control" type="text" name="UserName" required="" placeholder="Username">
+                        </div>
+                    </div>
+                    <p> </p>
+                    <div class="form-group">
+                        <div class="col-xs-15">
+                            <input class="form-control" type="password" name="Password" required="" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-15">
+                            <div class="checkbox text-center">
+                                <input id="checkbox-signup" type="checkbox">
+                                <label for="checkbox-signup"> Remember me </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-xs-15">
+                            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+                        </div>
+                    </div>
+                    <div class="form-group text-center m-t-20">
+                        @Html.ActionLink("Forgot Password", "ForgotPassword")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/custom")
+@Scripts.Render("~/bundles/wave")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+</html>

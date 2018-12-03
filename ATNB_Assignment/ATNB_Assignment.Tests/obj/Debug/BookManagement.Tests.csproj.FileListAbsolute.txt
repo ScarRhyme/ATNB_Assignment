@@ -1,0 +1,2 @@
+D:\FPT_ASP_NET_MVC\ATNB_Assignment\ATNB_Assignment\ATNB_Assignment.Tests\obj\Debug\BookManagement.Tests.csprojAssemblyReference.cache
+D:\FPT_ASP_NET_MVC\ATNB_Assignment\ATNB_Assignment\ATNB_Assignment.Tests\obj\Debug\BookManagement.Tests.csproj.CoreCompileInputs.cache

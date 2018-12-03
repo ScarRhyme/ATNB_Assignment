@@ -1,0 +1,65 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ATNB_Assignment.Models.Category>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministratorPage.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Books Category</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Books Category</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Book Categories List</h4>
+                <div class="table-responsive m-t-40">
+                    <a class="dt-button" tabindex="0" aria-controls="example23"><span>@Html.ActionLink("Create New", "Create")</span></a>
+                    <table class="display nowrap table table-hover table-striped table-bordered dataTable">
+                        <tr>
+                            <th>
+                                Category Name
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CateName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    <a href="/BookCategory/Edit/@item.CateId"><i class="fa fa-edit"></i></a> |
+                                    <a href="/BookCategory/Details/@item.CateId"><i class="fa fa-book-open"></i></a> |
+                                    <a href="/BookCategory/Delete/@item.CateId"><i class="fa fa-trash"></i></a>
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CateId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.CateId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.CateId })*@
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <div class="col-lg-12 clearfix dataTables_paginate paging_simple_numbers">
+                        @Html.PagedListPager(Model, sotrang => Url.Action("Index", new { page = sotrang }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

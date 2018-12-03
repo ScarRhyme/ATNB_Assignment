@@ -1,0 +1,39 @@
+﻿<header class="topbar" style="position: fixed; top: 0px; width: 100%;">
+    <nav class="navbar top-navbar navbar-expand-md navbar-light">
+        <div class="navbar-header">
+            <span style="">
+                <label>
+                    <strong>
+                        <a href="/Admin" style="color: white;font-size: 1.25rem;">World Of Books</a>
+                    </strong>
+                </label>
+                @*<label><strong>@Html.ActionLink("World Of Books", "Index", "Home")</strong></label>*@
+            </span>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto mt-md-0"></ul>
+            <ul class="navbar-nav my-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
+                    <div class="dropdown-menu dropdown-menu-left scale-up" style="left: -230px;">
+                        <ul class="dropdown-user">
+                            <li>
+                                <div class="dw-user-box">
+                                    <div class="u-img"><img src="/x48umdtuclz11.jpg" alt="user"></div>
+                                    <div class="u-text">
+                                        <h4>@Session["UserName"]</h4>
+                                        <p class="text-muted">@Session["Email"]</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Account Setting</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/Auth/Logout"><i class="fa fa-power-off"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ATNB_Assignment.Models.Category>
+@*@{ 
+    Layout = null;
+}*@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#Categories" data-toggle="collapse" aria-controls="Categories" aria-expanded="false">
+        <span data-feather="home"></span>
+        Categories <span class="sr-only">(current)</span>
+    </a>
+    <ul class="collapse" id="Categories" name="Category">
+        @foreach (var item in Model)
+        {
+            <li><a href="#" value="@item.CateId">@Html.DisplayFor(modelItem => item.CateName)</a></li>
+        }
+    </ul>
+</li>
+

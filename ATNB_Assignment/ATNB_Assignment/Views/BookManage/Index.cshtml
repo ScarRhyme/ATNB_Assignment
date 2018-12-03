@@ -1,0 +1,116 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<ATNB_Assignment.Models.Book>
+@{
+    Layout = "~/Views/Shared/_LayoutAdministratorPage.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Books Management</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Books Management</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Books List</h4>
+                <div class="table-responsive m-t-40">
+                    <a class="dt-button" tabindex="0" aria-controls="example23"><span>@Html.ActionLink("Create New", "Create")</span></a>
+                    <table class="display nowrap table table-hover table-striped table-bordered dataTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Summary
+                                </th>
+                                @*<th>
+                                        Image
+                                    </th>*@
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                @*<th>
+                                        CreatedDate
+                                    </th>
+                                    <th>
+                                        ModifiedDate
+                                    </th>*@
+                                <th>
+                                    IsActive
+                                </th>
+                                <th>
+                                    Author Name
+                                </th>
+                                <th>
+                                    Category Name
+                                </th>
+                                <th>
+                                    Publisher Name
+                                </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Summary)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.ImgUrl)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ModifiedDate)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsActive)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Author.AuthorName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.CateName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Publisher.Name)
+                                </td>
+                                <td>
+                                    <a href="/BookManage/Edit/@item.BookId"><i class="fa fa-edit"></i></a> |
+                                    <a href="/BookManage/Details/@item.BookId"><i class="fa fa-book-open"></i></a> |
+                                    <a href="/BookManage/Delete/@item.BookId"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <div class="col-lg-12 clearfix">
+                        @Html.PagedListPager(Model, sotrang => Url.Action("Index", new { page = sotrang }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

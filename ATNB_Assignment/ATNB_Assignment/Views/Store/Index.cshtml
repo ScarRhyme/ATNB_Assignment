@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ATNB_Assignment.Models.Book>
+@using ATNB_Assignment.Models;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<aside class="left-sidebar" style="overflow: visible;">
+    <nav class="sidebar-nav active">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                <h5 class="nav-small-cap">Categories Products</h5>
+                @{
+                    Html.RenderAction("CategoriesCollapse");
+                }
+                <div class="clear"></div>
+                @{
+                    Html.RenderAction("AuthorsCollapse");
+                }
+                <div class="clear"></div>
+                @{
+                    Html.RenderAction("PublisherCollapse");
+                }
+            </ul>
+        </div>
+    </nav>
+</aside>
+
+<div class="page-wrapper" style="min-height: 700px;margin-top: 10px;background-color: white;">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Column -->
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top img-responsive" src="~/Content/Images/@item.ImgUrl" alt="Card image cap">
+                        <div class="card-body">
+                            <ul class="list-inline font-14">
+                                <li class="p-l-0">@Html.DisplayFor(modelItem => item.ModifiedDate)</li>
+                                @*<li><a href="javascript:void(0)" class="link">3 Comment</a></li>*@
+                            </ul>
+                            <h3 class="font-normal">@Html.DisplayFor(modelItem => item.Title)</h3>
+                            <p class="m-b-0 m-t-10">@Html.DisplayFor(modelItem => item.Summary)</p>
+                            <a href="/Store/Details/@item.BookId" class="btn btn-info">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div id="products" class="row list-group">
+                <div class="item  col-xs-3 col-lg-3">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="http://placehold.it/280x350/000/fff" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Product title
+                            </h4>
+                            <p class="group inner list-group-item-text">
+                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                            </p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        $21.000
+                                    </p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+       
+    </div>
+</div>

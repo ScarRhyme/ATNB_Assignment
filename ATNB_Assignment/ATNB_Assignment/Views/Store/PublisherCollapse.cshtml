@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ATNB_Assignment.Models.Publisher>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#Publisher" data-toggle="collapse" aria-controls="Publisher" aria-expanded="false">
+        <span data-feather="home"></span>
+        Publisher <span class="sr-only">(current)</span>
+    </a>
+    <ul class="collapse" id="Publisher" name="Publisher">
+        @foreach (var item in Model)
+        {
+            <li><a href="#" value="@item.PubId">@Html.DisplayFor(modelItem => item.Name)</a></li>
+        }
+    </ul>
+</li>
