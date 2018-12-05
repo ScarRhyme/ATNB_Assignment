@@ -29,17 +29,34 @@
 <div class="page-wrapper" style="min-height: 700px;margin-top: 10px;background-color: white;">
     <div class="container-fluid">
         <div class="row">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item">
+                        <div class="container"> <img class="d-block img-fluid" src="~/Content/Images/1.jpg" alt="First slide"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container"><img class="d-block img-fluid" src="~/Content/Images/2.jpg" alt="Second slide"></div>
+                    </div>
+                    <div class="carousel-item active">
+                        <div class="container"><img class="d-block img-fluid" src="~/Content/Images/3.jpg" alt="Third slide"></div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+            </div>
+        </div>
+        <div class="row">
             <!-- Column -->
             @foreach (var item in Model)
             {
                 <div class="col-lg-4">
                     <div class="card">
                         <span class="image">
-                            <img class="card-img-top img-responsive" src="~/Content/Images/@item.ImgUrl" alt="Card image cap">
+                            <img class="card-img-top img-responsive" src="@item.ImgUrl" alt="Card image cap">
                         </span>
                         <div class="card-body">
                             <ul class="list-inline font-14">
-                                <li class="p-l-0">@Html.DisplayFor(modelItem => item.ModifiedDate)</li>
+                                <li class="p-l-0">@Html.DisplayFor(modelItem => item.CreatedDate)</li>
                                 @*<li><a href="javascript:void(0)" class="link">3 Comment</a></li>*@
                             </ul>
                             <h3 class="font-normal">@Html.DisplayFor(modelItem => item.Title)</h3>
@@ -68,7 +85,6 @@
                     </div>
                 </div>
             }
-
             <!-- Column -->
         </div>
     </div>
