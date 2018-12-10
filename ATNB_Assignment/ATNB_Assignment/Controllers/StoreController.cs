@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ATNB_Assignment.Models;
+using PagedList;
 
 namespace ATNB_Assignment.Controllers
 {
@@ -33,10 +34,10 @@ namespace ATNB_Assignment.Controllers
         }
 
         // GET: Store
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var books = db.Books.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher).Where(p => p.IsActive != false);
-            return View(books.ToList());
+            var books = db.Books.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher).Where(p => p.IsActive != false).OrderBy(p => p.BookId).ToPagedList(page ?? 1, 9);
+            return View(books);
         }
 
         // GET: Store/Details/5
@@ -145,6 +146,8 @@ namespace ATNB_Assignment.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
 
         protected override void Dispose(bool disposing)
         {

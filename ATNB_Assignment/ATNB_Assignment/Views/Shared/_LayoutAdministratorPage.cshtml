@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrator</title>
     @Styles.Render("~/Content/css")
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" />
+    @*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">*@
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" />*@
 </head>
 <body class="fix-header fix-sidebar card-no-border">
     <div id="main-wrapper">
@@ -16,7 +16,7 @@
         @{
             Html.RenderPartial("_LayoutSideBarAdmin");
         }
-        <div class="page-wrapper" style="min-height: 700px;margin-top: 70px;">
+        <div class="page-wrapper" style="min-height: 700px;margin-top: 70px; margin-left: 270px;">
             <div class="container-fluid">
                 @*@{
                     Html.RenderPartial("_LayoutPageTitleAdmin");ViewBag.Title = "BookManage";

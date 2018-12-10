@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="ATNB_Assignment_BookModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ATNB_Assignment_BookModel.Comment" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ATNB_Assignment_BookModel.OrderDetail" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ATNB_Assignment_BookModel.Order" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATNB_Assignment_BookModel.Order" Width="1.5" PointX="5.375" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="ATNB_Assignment_BookModel.Publisher" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ATNB_Assignment_BookModel.User" Width="1.5" PointX="2.75" PointY="7.875" IsExpanded="true" />
         <AssociationConnector Association="ATNB_Assignment_BookModel.FK_Book_Author" ManuallyRouted="false" />

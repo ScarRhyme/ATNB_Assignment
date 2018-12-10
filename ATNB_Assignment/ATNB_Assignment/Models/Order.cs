@@ -11,8 +11,7 @@ namespace ATNB_Assignment.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,15 +21,11 @@ namespace ATNB_Assignment.Models
         }
     
         public int OrderId { get; set; }
-        [Required]
         public string CustomerName { get; set; }
-        [Required]
         public string CustomerEmail { get; set; }
-        [Required]
         public int CustomerPhone { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<System.DateTime> ShippedDate { get; set; }
-        [Required]
         public string ShipAddress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

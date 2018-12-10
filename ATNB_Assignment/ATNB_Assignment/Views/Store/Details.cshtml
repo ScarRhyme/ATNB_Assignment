@@ -5,103 +5,103 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Book</h4>
+<h1 class="container" style="background: #d0d0d0;">Product Details</h1>
+<p></p>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    <div class="row" style="background-color: #fff;">
+        <div class="product-image">
+            <img class="card-img-top img-responsive" src="@Model.ImgUrl" />
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <div class="clearfix">
+                <hr />
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Summary)
-        </dt>
+            <div class="card card-body">
+                <h3 class="card-title">Book Summary</h3>
+                <hr />
+                <p class="card-text">@Model.Summary</p>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Summary)
-        </dd>
+        <div class="clearfix">
+            <hr />
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImgUrl)
-        </dt>
+        <div class="product-cart">
 
-        <dd>
-            @Html.DisplayFor(model => model.ImgUrl)
-        </dd>
+            <h1 style="color: chocolate;" id="title">@Model.Title</h1>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <div class="clearfix">
+                <hr />
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <div class="row flex">
+                <div class="col-xs-7 no-padding-right product-info-block">
+                    <div class="item-row1">
+                        <div class="item-price" style="margin-left: 16px;">
+                            <div class="price-block show-border">
+                                <div class="ribbon-wrapper card">
+                                    <div class="ribbon ribbon-primary">Book</div>
+                                    <p class="price-item" data-value="@Model.Price" id="price">
+                                        <span id="flash-sale-price-label" style="">
+                                            Price:
+                                        </span>
+                                        <span class="span-price" id="span-price">@Model.Price$</span>
+                                    </p>
+                                    <div class="quantity-box">
+                                        <div class="quantity">
+                                            <p class="">Quantity of profucts: </p>
+                                            <div class="input-group-btn-vertical bootstrap-touchspin">
+                                                <input id="quantity" type="tel" name="quantity" class="form-control" value="1" min="1" max="@Model.Quantity" style="display: block;background-color: #fff;">
+                                            </div>
+                                        </div>
+                                        <div class="cta-box">
+                                            <button class="add-to-cart btn btn-success" type="button" id="AddCart_btn" style="width: 120px;height: 80px;">
+                                                <span class="text">
+                                                    <i class="fas fa-shopping-cart"></i> Add to cart
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
+            <div class="clearfix">
+                <hr />
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Author.AuthorName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Author.AuthorName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CateName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.CateName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Publisher.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Publisher.Name)
-        </dd>
-
-    </dl>
+            <h3>Book Details</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="book-detail">Publisher</td>
+                    <td>@Model.Publisher.Name</td>
+                </tr>
+                <tr>
+                    <td class="book-detail">Author</td>
+                    <td>@Model.Author.AuthorName</td>
+                </tr>
+                <tr>
+                    <td class="book-detail">Publish Date</td>
+                    <td>@Model.CreatedDate</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BookId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@section Scripts {
+    @Scripts.Render("~/bundles/frontjs")
+<script>
+    $("#quantity").TouchSpin({
+        min: 1,
+        max: @Model.Quantity,
+        step: 1,
+        boostat: 5,
+        maxboostedstep: 10
+        //postfix: ''
+    });</script>
+}

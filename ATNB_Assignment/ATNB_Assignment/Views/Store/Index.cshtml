@@ -1,50 +1,21 @@
-﻿@model IEnumerable<ATNB_Assignment.Models.Book>
-@using ATNB_Assignment.Models;
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<ATNB_Assignment.Models.Book>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.RenderPartial("_LayoutSideBarStorePage");
 }
 
-<aside class="left-sidebar" style="overflow: visible;">
-    <nav class="sidebar-nav active">
-        <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-                <h5 class="nav-small-cap">Categories Products</h5>
-                @{
-                    Html.RenderAction("CategoriesCollapse");
-                }
-                <div class="clear"></div>
-                @{
-                    Html.RenderAction("AuthorsCollapse");
-                }
-                <div class="clear"></div>
-                @{
-                    Html.RenderAction("PublisherCollapse");
-                }
-            </ul>
-        </div>
-    </nav>
-</aside>
-
-<div class="page-wrapper" style="min-height: 700px;margin-top: 10px;background-color: white;">
+<div class="page-wrapper" style="min-height: 700px;margin-left: 260px;">
     <div class="container-fluid">
-        <div class="row">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item">
-                        <div class="container"> <img class="d-block img-fluid" src="~/Content/Images/1.jpg" alt="First slide"></div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container"><img class="d-block img-fluid" src="~/Content/Images/2.jpg" alt="Second slide"></div>
-                    </div>
-                    <div class="carousel-item active">
-                        <div class="container"><img class="d-block img-fluid" src="~/Content/Images/3.jpg" alt="Third slide"></div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-            </div>
+        @{
+            Html.RenderPartial("Carousel");
+        }
+        <div class="clear">
+            <hr />
         </div>
+        <h2>Feature Books</h2>
         <div class="row">
             <!-- Column -->
             @foreach (var item in Model)
@@ -60,8 +31,9 @@
                                 @*<li><a href="javascript:void(0)" class="link">3 Comment</a></li>*@
                             </ul>
                             <h3 class="font-normal">@Html.DisplayFor(modelItem => item.Title)</h3>
+                            <div class="clearfix"><hr /></div>
                             <div class="row">
-                                <div class="col-xs-12 col-md-6">
+                                <div class="col-md-12">
                                     <p class="lead">
                                         @item.Author.AuthorName
                                     </p>
@@ -69,7 +41,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-md-6">
-                                    <p class="lead">
+                                    <p class="lead" style="color:red;">
                                         $@item.Price
                                     </p>
                                 </div>
@@ -86,6 +58,9 @@
                 </div>
             }
             <!-- Column -->
+            <div class="col-lg-12 clearfix">
+                @Html.PagedListPager(Model, sotrang => Url.Action("Index", new { page = sotrang }))
+            </div>
         </div>
     </div>
 </div>

@@ -13,7 +13,8 @@ namespace ATNB_Assignment
             //            "~/Scripts/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery.min.js"));
+                        "~/Scripts/jquery.min.js",
+                        "~/Scripts/jquery.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -32,12 +33,14 @@ namespace ATNB_Assignment
                         "~/Scripts/sticky-kit.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/frontjs").Include(
+                        "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.min.js",
                          "~/Scripts/popper.min.js",
                          "~/Scripts/fontawesome.js",
                          "~/Scripts/bootstrap.min.js",
                         "~/Scripts/fontawesome.min.js",
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jquery.validate*",
+                        "~/Scripts/jquery.bootstrap-touchspin.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                         "~/Scripts/popper.min.js",
@@ -56,21 +59,19 @@ namespace ATNB_Assignment
                       "~/Scripts/bootstrap.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/frontcss").Include(
-                      "~/Scripts/popper.min.js",
-                      "~/Content/fontawesome.css",
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/style.css",
-                      "~/Content/bootstrap.min.css"
-                ));
+                      "~/Content/jquery.bootstrap-touchspin.css")
+                .Include("~/Content/all.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/fontawesome.css",
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/green-dark.css",
-                      "~/Content/style.css",
-                      "~/Content/themify-icons.css"));
+                      "~/Content/style.css")
+                      .Include("~/Content/all.css", new CssRewriteUrlTransform())
+                      .Include("~/Content/themify-icons.css", new CssRewriteUrlTransform()));
         }
     }
 }
