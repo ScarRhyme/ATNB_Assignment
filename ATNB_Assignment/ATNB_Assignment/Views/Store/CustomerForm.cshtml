@@ -1,0 +1,41 @@
+﻿<div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Fill Your Info To Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("ProcessOrder", "Store", FormMethod.Post, new { id = "customer-form" }))    //Form điền thông tin khách hàng
+            {
+                <div class="modal-body">
+
+                    <div>
+                        <p><h3 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Your Infomation</h3></p>
+                        <div class="form-group">
+                            <label for="">Your Name</label>
+                            <input type="text" name="CustomerName" class="form-control" id="CustomerName" placeholder="Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="text" name="CustomerEmail" class="form-control" id="CustomerEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Phone Number</label>
+                            <input type="text" name="CustomerPhone" class="form-control" id="CustomerPhone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Address</label>
+                            <input type="text" name="ShipAddress" class="form-control" id="ShipAddress" placeholder="Your Address">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="btn_info" class="btn btn-primary">Submit</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

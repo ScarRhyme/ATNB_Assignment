@@ -1,0 +1,61 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<ATNB_Assignment.Models.Book>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.RenderPartial("_LayoutSideBarStorePage");
+}
+
+<div class="page-wrapper" style="min-height: 700px;margin-left: 260px;">
+    <div class="container-fluid">
+        <h2>Feature Books</h2>
+        <div class="row">
+            <!-- Column -->
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4">
+                    <div class="card">
+                        <span class="image">
+                            <img class="card-img-top img-responsive" src="@item.ImgUrl" alt="Card image cap">
+                        </span>
+                        <div class="card-body">
+                            <ul class="list-inline font-14">
+                                <li class="p-l-0">@Html.DisplayFor(modelItem => item.CreatedDate)</li>
+                                @*<li><a href="javascript:void(0)" class="link">3 Comment</a></li>*@
+                            </ul>
+                            <h3 class="font-normal">@Html.DisplayFor(modelItem => item.Title)</h3>
+                            <div class="clearfix"><hr /></div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="lead">
+                                        @item.Author.AuthorName
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead" style="color:red;">
+                                        $@item.Price
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="m-b-0 m-t-10 summary">
+                                @item.Summary
+                            </p>
+                            <div class="row">
+                                <a href="/Store/Details/@item.BookId" class="btn btn-info" style="margin-left: 10px;">Read more</a>
+                                <a href="#" class="btn btn-success" style="margin-left: 140px;">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- Column -->
+            <div class="col-lg-12 clearfix">
+                @Html.PagedListPager(Model, sotrang => Url.Action("Result", new { page = sotrang }))
+            </div>
+        </div>
+    </div>
+</div>
+
