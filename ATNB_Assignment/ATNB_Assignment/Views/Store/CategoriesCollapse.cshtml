@@ -10,7 +10,7 @@
     <ul class="collapse" id="Categories" name="Category">
         @foreach (var item in Model)
         {
-            <li><a href="#" value="@item.CateId">@Html.DisplayFor(modelItem => item.CateName)</a></li>
+            <li><a href="/Store/FindByCateId/@item.CateId" value="@item.CateId">@Html.DisplayFor(modelItem => item.CateName)</a></li>
         }
     </ul>
 </li>

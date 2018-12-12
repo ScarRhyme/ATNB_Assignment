@@ -8,7 +8,7 @@
     <ul class="collapse" id="Authors" name="Author">
         @foreach (var item in Model)
         {
-            <li><a href="#" value="@item.AuthorId">@Html.DisplayFor(modelItem => item.AuthorName)</a></li>
+            <li><a href="/Store/FindByAuthId/@item.AuthorId" value="@item.AuthorId">@Html.DisplayFor(modelItem => item.AuthorName)</a></li>
         }
     </ul>
 </li>

@@ -1,5 +1,58 @@
-﻿@{
+﻿@model IEnumerable<ATNB_Assignment.Models.CartItems>
+@{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h1 class="container" style="background: #d0d0d0;">Customer Cart</h1>
+<p></p>
+<div class="container" style="min-height:700px">
+    <h1 style="text-align:center" id="noItems">You don't have any item in your cart. <i class="fas fa-sad-cry"></i></h1>
 
+    @if (Session["Cart"] != null)
+    {
+        <table class="table table-bordered" id="tableItems">
+            <thead style="background-color: deepskyblue;">
+                <tr style="text-align: center">
+                    <td>Book Id</td>
+                    <td>Title</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in (List<ATNB_Assignment.Models.CartItems>)Session["Cart"])
+                {
+                    <tr style="text-align: center">
+                        <td>@item.Book.BookId</td>
+                        <td>@item.Book.Title</td>
+                        <td>@item.Book.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>@(String.Format("{0:N0}", item.Book.Price * item.Quantity))</td>
+                        <td><a href="/Store/DeleteCart/@item.Book.BookId" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                }
+
+                <tr style="color: #FF0000; font-weight: bold; font-size: 17px">
+                    <td colspan="4">Total:</td>
+                    <td colspan="2">
+                        @{
+                            List<ATNB_Assignment.Models.CartItems> temp = (List<ATNB_Assignment.Models.CartItems>)Session["Cart"];
+                            var total = String.Format("{0:N0}", temp.Sum(x => x.Quantity * x.Book.Price));
+                        }
+
+                        @total VNĐ
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    }
+    <button type="button" id="btn_customerInfo" class="btn btn-primary" data-toggle="modal" data-target="#customerModal">
+        Order
+    </button>
+    @{
+        Html.RenderPartial("CustomerForm");
+    }
+</div>

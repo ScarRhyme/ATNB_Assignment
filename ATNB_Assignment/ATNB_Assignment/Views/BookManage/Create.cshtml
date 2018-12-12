@@ -60,7 +60,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control" } })*@
+                <textarea class="form-control text-box single-line" id="Summary" name="Summary" type="text" value="" ></textarea>
                 @Html.ValidationMessageFor(model => model.Summary, "", new { @class = "text-danger" })
             </div>
         </div>

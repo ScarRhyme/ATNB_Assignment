@@ -29,7 +29,7 @@
         </div>
 
         <div class="product-cart">
-
+            <input hidden id="BookId" value="@Model.BookId">
             <h1 style="color: chocolate;" id="title">@Model.Title</h1>
 
             <div class="clearfix">
@@ -47,7 +47,7 @@
                                         <span id="flash-sale-price-label" style="">
                                             Price:
                                         </span>
-                                        <span class="span-price" id="span-price">@Model.Price$</span>
+                                        <span class="span-price" id="span-price">@Model.Price</span> $
                                     </p>
                                     <div class="quantity-box">
                                         <div class="quantity">
@@ -86,6 +86,10 @@
                     <td>@Model.Author.AuthorName</td>
                 </tr>
                 <tr>
+                    <td class="book-detail">Category</td>
+                    <td>@Model.Category.CateName</td>
+                </tr>
+                <tr>
                     <td class="book-detail">Publish Date</td>
                     <td>@Model.CreatedDate</td>
                 </tr>
@@ -95,7 +99,8 @@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/frontjs")
-<script>
+    
+    <script>
     $("#quantity").TouchSpin({
         min: 1,
         max: @Model.Quantity,

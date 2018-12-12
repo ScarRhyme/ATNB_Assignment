@@ -42,6 +42,10 @@ namespace ATNB_Assignment
                         "~/Scripts/jquery.validate*",
                         "~/Scripts/jquery.bootstrap-touchspin.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ajax-cart").Include(
+                "~/Scripts/AJAX-Cart.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                         "~/Scripts/popper.min.js",
                         "~/Scripts/custom.min.js",
